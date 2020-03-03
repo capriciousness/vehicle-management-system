@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" name="GennLife-DS" packages="com.gennlife.darren.log.converter">
+  <Properties>
+    <Property name="APP_NAME">GennLife-DS</Property>
+    <Property name="LOG_HOME">/opt/applog/${APP_NAME}</Property>
+    <Property name="LOG_PREFIX_STRING">%white{[%4shorten{%thread}{4}{body}]} %highlight{%5.5level}{FATAL=bright red,ERROR=bright red,WARN=bright yellow,INFO=bright blue,TRACE=bright white,DEBUG=bright magenta}</Property>
+    <Property name="LOG_SUFFIX_STRING">%highlight{%msg}{FATAL=bright red,ERROR=red,WARN=yellow,INFO=white,TRACE=white,DEBUG=magenta}</Property>
+    <Property name="LOG_CLASS_STRING">%style{%26shorten{%loggerClass}{26}{body}}</Property>
+  </Properties>
+  <Appenders>
+    <Console name="STDOUT_PLAIN">
+      <PatternLayout pattern="${LOG_PREFIX_STRING} ${LOG_CLASS_STRING}{bright,green} ${LOG_SUFFIX_STRING}%n"/>
+      <ThresholdFilter level="debug"/>
+    </Console>
+    <Console name="STDOUT_HIGHLIGHT">
+      <PatternLayout pattern="${LOG_PREFIX_STRING} ${LOG_CLASS_STRING}{bright,cyan} ${LOG_SUFFIX_STRING}%n"/>
+      <ThresholdFilter level="debug"/>
+    </Console>
+    <RollingFile name="FILE" fileName="${LOG_HOME}/current.log" filePattern="${LOG_HOME}/%d{MM-dd-yyyy}_%i.log.gz">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="100 MB"/>
+        <TimeBasedTriggeringPolicy/>
+      </Policies>
+      <ThresholdFilter level="info"/>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <!-- Suppress warnings caused by Spring Boot Lifecycle issue -->
+    <!--<Logger name="org.springframework.context.annotation.ConfigurationClassEnhancer" level="error" additivity="false"/>-->
+    <!-- Suppress debugs and infos caused by Reflections -->
+    <Logger name="org.reflections" level="warn" additivity="false">
+      <AppenderRef ref="STDOUT_PLAIN"/>
+      <AppenderRef ref="FILE"/>
+    </Logger>
+    <Logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost]" level="info" additivity="false">
+      <AppenderRef ref="STDOUT_PLAIN"/>
+      <AppenderRef ref="FILE"/>
+    </Logger>
+    <!-- Only show debug messages in consoles -->
+    <Logger name="com.gennlife" level="debug" additivity="false">
+      <AppenderRef ref="STDOUT_HIGHLIGHT"/>
+      <AppenderRef ref="FILE"/>
+    </Logger>
+    <Root level="info">
+      <AppenderRef ref="STDOUT_PLAIN"/>
+      <AppenderRef ref="FILE"/>
+    </Root>
+  </Loggers>
+</Configuration>
