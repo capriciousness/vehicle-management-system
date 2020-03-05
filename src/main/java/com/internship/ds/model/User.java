@@ -3,7 +3,9 @@ package com.internship.ds.model;
 import lombok.Data;
 
 @Data
-public class LoginInformation {
-    private String name;
+public class User{
+    private String username;
     private String password;
+    private String name;
+
 }

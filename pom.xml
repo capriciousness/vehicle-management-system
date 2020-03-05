@@ -63,6 +63,19 @@
             <version>1.3.2</version>
         </dependency>
 
+        <!-- Database: MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Database Connection Pool -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>2.7.8</version>
+        </dependency>
+
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -93,17 +106,14 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Database: MySQL -->
+        <!--前端模板引擎FreeMaker和Velocity ，Thymeleaf（官方推荐）-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-
-        <!-- Database Connection Pool -->
         <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>2.7.8</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
     </dependencies>
