@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Objects;
 
 @Service
@@ -36,7 +37,8 @@ public class LoginService {
         // 根据id查询用户所拥有的角色
         Long id = userDao.findId(user.getUsername());
         String role = userDao.findId_Role(id);
-        return new JSONObject().fluentPut("errorCode",0).fluentPut("error",null).fluentPut("name",user.getName()).fluentPut("role",role);
+        return new JSONObject().fluentPut("errorCode",0).fluentPut("error",null)
+                .fluentPut("data",new JSONObject().fluentPut("name",user.getName()).fluentPut("role",role));
     }
 
 }
