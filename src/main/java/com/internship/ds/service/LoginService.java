@@ -33,7 +33,10 @@ public class LoginService {
             throw new ZcException(ExceptionEnums.NOT_FOUND);
         }
         session.setAttribute("name",user.getUsername());
-        return new JSONObject().fluentPut("errorCode",0).fluentPut("error",null).fluentPut("data",user);
+        // 根据id查询用户所拥有的角色
+        Long id = userDao.findId(user.getUsername());
+        String role = userDao.findId_Role(id);
+        return new JSONObject().fluentPut("errorCode",0).fluentPut("error",null).fluentPut("name",user.getName()).fluentPut("role",role);
     }
 
 }
