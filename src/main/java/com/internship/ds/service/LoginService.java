@@ -33,7 +33,7 @@ public class LoginService {
         if(user == null){
             throw new ZcException(ExceptionEnums.NOT_FOUND);
         }
-        session.setAttribute("name",user.getUsername());
+        session.setAttribute("username",user.getUsername());
         // 根据id查询用户所拥有的角色
         Long id = userDao.findId(user.getUsername());
         String role = userDao.findId_Role(id);
