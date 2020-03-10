@@ -12,6 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import java.util.List;
 
 import static com.internship.ds.controller.EMController.CAR_ZC;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
@@ -66,18 +69,19 @@ public class EMController {
      * @return
      */
     @RequestMapping(value = CAR_RECORD_U_APPLICATION ,method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<JSONObject> application(@RequestBody String request, ServletRequest servletRequest){
-        return ResponseEntity.status(200).body(recordService.application(servletRequest,request));
+    public String application(@RequestBody String request, ServletRequest servletRequest){
+        recordService.application(request, servletRequest);
+        return  null;
+        //return "redirect:http://localhost:10010/zccar/record/xxx.html";
     }
 
     /**
      * 用户查询自己使用记录
-     * @param request
      * @param servletRequest
      * @return
      */
     @RequestMapping(value = CAR_RECORD_U_SEARCH,method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<JSONObject> uRecordSearch(@RequestBody String request, ServletRequest servletRequest){
+    public ResponseEntity<JSONObject> uRecordSearch (ServletRequest servletRequest){
         return ResponseEntity.status(200).body(recordService.usearch(servletRequest));
     }
     /**
@@ -88,7 +92,7 @@ public class EMController {
      */
     @RequestMapping(value = CAR_RECORD_A_SEARCH ,method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<JSONObject> aRecordSearch(@RequestBody String request, ServletRequest servletRequest){
-        return ResponseEntity.status(200).body(recordService.asearch(servletRequest,request));
+        return ResponseEntity.status(200).body(recordService.asearch(request, servletRequest));
     }
     /**
      * 车辆管理员修改审核状态及其他信息
@@ -97,8 +101,10 @@ public class EMController {
      * @return
      */
     @RequestMapping(value = CAR_RECORD_A_UPDATE ,method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<JSONObject> updateRecord(@RequestBody String request, ServletRequest servletRequest){
-        return ResponseEntity.status(200).body(recordService.updateRecord(servletRequest,request));
+    public String updateRecord(@RequestBody String request, ServletRequest servletRequest){
+        recordService.updateRecord(servletRequest,request);
+        return  null;
+        //return "redirect:http://localhost:10010/zccar/record/xxx.html";
     }
 
 }

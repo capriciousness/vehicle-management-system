@@ -21,7 +21,7 @@ public interface UserDao {
     void insertUser(@Param("u") User user);
 
     // 根据id查用户角色
-    @Select("SELECT details FROM tab_role  WHERE id = ( SELECT roleId FROM tab_user_role WHERE userId = #{id}) ")
+    @Select("SELECT details FROM tab_role  WHERE id in ( SELECT roleId FROM tab_user_role WHERE userId = #{id}) ")
     String findId_Role(@Param("id") Long id);
 
 
