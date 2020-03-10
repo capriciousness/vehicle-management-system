@@ -26,7 +26,7 @@ public class RegisterService {
 
         Long id = userDao.findId(user.getUsername());
         if(id != null){
-            throw new ZcException(ExceptionEnums.TRANSFER_FAILED);
+            throw new ZcException(ExceptionEnums.REGISTER_FAILED);
         }
         else{
             userDao.insertUser(user);

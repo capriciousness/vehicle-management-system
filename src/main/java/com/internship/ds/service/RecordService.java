@@ -3,8 +3,12 @@ package com.internship.ds.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.internship.ds.dao.RecordDao;
+import com.internship.ds.dao.VericleInfoManageDao;
+import com.internship.ds.exceptionAOP.enums.ExceptionEnums;
+import com.internship.ds.exceptionAOP.exception.ZcException;
 import com.internship.ds.model.Record;
 import com.internship.ds.model.User;
+import com.internship.ds.model.VericleInfo;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +31,10 @@ public class RecordService {
         JSONObject json = Objects.requireNonNull(p.getJSONObject("record"));
         Record record = JSONObject.toJavaObject(json, Record.class);
         //此处需要调用车辆管理的查询车辆状态方法
+        int status = recordDao.findStatus(record.getUsername());
+        if(status == 0){
+            throw new ZcException(ExceptionEnums.NOTALLOWED);
+        }
         recordDao.uInsert(record);
 
     }

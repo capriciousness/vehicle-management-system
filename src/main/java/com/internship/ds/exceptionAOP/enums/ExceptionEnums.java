@@ -14,7 +14,7 @@ public enum  ExceptionEnums {
     INCORRECT_STATE(6, "Incorrect state."),
     RESTRICTED(7, "Operation is not allowed."),
     CANCELLED(8, "Operation has been cancelled."),
-    LIMIT_EXCEEDED(9, "Limit exceeded."),
+    NOTALLOWED(9, "not allowed."),
     CONFLICT(10, "Conflicts detected."),
     UNSUPPORTED(11, "Operation is not supported."),
     NOT_LOGGED_IN(12, "Not logged in."),

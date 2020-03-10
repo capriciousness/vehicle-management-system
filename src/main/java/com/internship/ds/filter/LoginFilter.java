@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
-//@Component
-//@WebFilter(filterName = "LoginFilter",urlPatterns = "/*")
-//@Order(1)  //Order(1)在定义多个Filter时，用于决定执行顺序的，数字越小，越先执行。
+@Component
+@WebFilter(filterName = "LoginFilter",urlPatterns = "/*")
+@Order(1)  //Order(1)在定义多个Filter时，用于决定执行顺序的，数字越小，越先执行。
 public class LoginFilter implements Filter {
     private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(
-            Arrays.asList("/zccar/staff/index", "/zccar/staff/login","/zccar/staff/login")));
+            Arrays.asList("/zccar/staff/index", "/zccar/staff/register","/zccar/staff/login")));
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

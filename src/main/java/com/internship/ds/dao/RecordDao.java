@@ -27,4 +27,7 @@ public interface RecordDao {
 
     @Update("update tab_vehicle set status = 0 where id = #{id} ")
     void updateVehicle(@Param("id") String vehicleId);
+
+    @Select("select status from tab_vehicle where username = #{username} ")
+    int findStatus(@Param("username") String username);
 }
