@@ -8,7 +8,7 @@ public enum  ExceptionEnums {
 
     UNIMPLEMENTED(1, "Not yet implemented."),
     UNEXPECTED(2, "Unexpected error."),
-    TRANSFER_FAILED(3, "Transfer failed."),
+    REGISTER_FAILED(3, "Register failed."),
     FORMAT_CORRUPTED(4, "Format corrupted."),
     NOT_FOUND(5, "Not found."),
     INCORRECT_STATE(6, "Incorrect state."),
