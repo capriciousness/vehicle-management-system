@@ -10,7 +10,7 @@ public class UserInformation {
 //    private int role_id;
 //    private int permission_id;
     private String phone;
-    private String role;
+    private String details;
 //    private String role_manage;
 //    private String permission_manage;
 }

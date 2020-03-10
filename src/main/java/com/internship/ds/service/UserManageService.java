@@ -28,7 +28,7 @@ public class UserManageService {
         UserInformation userInfo = JSONObject.toJavaObject(jsonObject, UserInformation.class);
         userManageDao.updateUserBase(userInfo);
         Integer userId = userManageDao.findUserId(userInfo.getName());
-        Integer roleId = userManageDao.findUserRoleId(userInfo.getRole());
+        Integer roleId = userManageDao.findUserRoleId(userInfo.getDetails());
         userManageDao.updataUserRole(userId,roleId);
         return null;
     }
