@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface VericleInfoManageDao {
 
-    @Insert("insert into tab_vehicle (vehicleNumber,status,seats) values ('#{car.vehicleNumber}',#{car.status},#{car.seats})")
+    @Insert("insert into tab_vehicle (vehicleNumber,status,seats) values (#{car.vehicleNumber},#{car.status},#{car.seats})")
     void addCarInfo(@Param("car")VericleInfo car);
 
     @Update("update tab_vehicle set status = #{car.status}, seats = #{car.seats} where vehicleNumber = #{car.vehicleNumber}")

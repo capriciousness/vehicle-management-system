@@ -30,13 +30,13 @@ public interface UserManageDao {
     @Select("select id from tab_role details = #{det}")
     Integer findUserRoleId(@Param("det")String det);
 
-    @Insert("insert into tab_role (details,ps) values ('#{det}','#{ps}')")
+    @Insert("insert into tab_role (details,ps) values (#{det},#{ps})")
     void addRole(@Param("det")String det, @Param("ps")String ps);
 
     @Delete("delete from tab_role where details = #{det}")
     void delRole(@Param("det")String det);
 
-    @Insert("insert into tab_permission (details,ps) values ('#{det}','#{ps}')")
+    @Insert("insert into tab_permission (details,ps) values (#{det},#{ps})")
     void addPower(@Param("det")String det, @Param("ps")String ps);
 
     @Delete("delete from tab_permission where details = #{det}")
