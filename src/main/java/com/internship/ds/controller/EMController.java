@@ -27,10 +27,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping(CAR_ZC)
 public class EMController {
 
-    @RequestMapping(value = CAR_STAFF_LOGIN , method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<JSONObject> login(ServletRequest servletRequest, @RequestBody String request){
-        return ResponseEntity.status(200).body(loginService.login(servletRequest,request));
-    }
+//    @RequestMapping(value = CAR_STAFF_LOGIN , method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
+//    public ResponseEntity<JSONObject> login(ServletRequest servletRequest, @RequestBody String request){
+//        return ResponseEntity.status(200).body(loginService.login(servletRequest,request));
+//    }
 
     @RequestMapping(value = CAR_USERBASE_UPDATE , method = POST , produces = APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<JSONObject> userManage(@RequestBody String request){
